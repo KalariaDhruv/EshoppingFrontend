@@ -60,4 +60,28 @@ public class indexController {
 		return mv;
 		
 	}	
+	
+	@RequestMapping("/goToLogin")
+	public String gotologin()
+	{
+		return "login";
+	}
+	
+	@RequestMapping("/userLogged")
+	public String underlogged()
+	{
+		return "redirect:/login";
+	}
+	
+	@RequestMapping("/error")
+	public String underError()
+	{
+		return "error";
+	}
+	
+	@RequestMapping("/reLogin")
+	public String relogin()
+	{
+		return "redirect:/goToLogin";
+	}
 }
