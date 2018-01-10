@@ -1,119 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-    <%@taglib uri="http://www.springframework.org/tags/form" prefix="fm"%>
-        
-    <%@ include file="header.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
 
-body 
-{
-    margin:  0 auto;
-    background-image: url("resources/images/login/sinli.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 720px;
-}
+<title>Insert title here</title>
 
-.container
-{
-width: 425px;
-height: 350px;
-text-align: center;
-background-color: rgba(240,248,255, 0.4);
-border-radius: 4px;
-margin: 0 auto;
-margin-top: 150px;
-} 
+<meta name="viewport" content="width=device-width,intial-scale=l">
+<meta cherset="utf-8">
+<script src="http://ajax.google.com/ajax/libs/jquary/3.2.1/jquary.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstra/3.3.7/css/bootstra.min.css" rel="stylesheet">
 
-.container img 
-{
-width: 220px;
-height: 220px;
-margin-top: -100px;
-margin-bottom: 30px;	
-}
-
-.container input[type="text"],input[type="password"] 
-{
-height: 45px;
-width: 300px;
-font-size: 18px;
-margin-bottom: 30px;
-margin-top: -20px;
-padding-left: 30px;	
-padding-right: 60px;
-}
-
-.container span
-{
-font-size: 35px;
-color: #778899;
-margin-top: -22px;
-}
-
-.container button 
-{
-height: 35px;
-margin-top: -20px;
-}
-
-.container a 
-{
-margin-right: 30px;	
-}
-
-
-</style>
-<title>Login</title>
 </head>
-
 <body>
-<%-- ${msg}
- --%>
+
+<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+
 <div class="container">
-<img alt="error" src="resources/images/login/image1.png">
-  <fm:form class="form-horizontal" action="login">
+<h2>Welcome to login page</h2>
+<form action="${pageContext.request.contextPath}/login" class="form-sigin" method="post">
+<h3><lable>Email:</lable></h3>
+<input type="text" name="username" class="login-box" placeholder="Enter username" required>
 
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="username"><span class="glyphicon glyphicon-user"></span></label>
-      <div class="col-sm-7">
-        <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" >
-      </div>
-    </div>
+<h3><lable>Password:</lable></h3>
+<input type="password" name="password" class="login-box" placeholder="Enter password" required>
 
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="password"><span class="glyphicon glyphicon-briefcase"></span></label>
-      <div class="col-sm-7">          
-        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
-      </div>
-    </div>
+<button class="btn btn-lg btn-info" type="submit">Login</button>
+<button class="btn btn-lg btn-info" type="reset">Cancel</button>
 
-    <div class="form-group">        
-      <div class="col-sm-offset-4 col-sm-4">
-        <button type="submit" class="btn btn-default">Login
-        </button>
-      </div>
-    </div>
-    
-    <div class="form-group">
-    <div class="col-sm-offset-4 col-sm-5">
-    <a href="#">Forget Password?</a>
-    </div>
-    </div>
-  
-  
-  </fm:form>
-
+</form>
 </div>
 
 </body>

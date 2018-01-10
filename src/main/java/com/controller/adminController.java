@@ -18,7 +18,7 @@ import com.model.Supplier;
 
 
 @Controller
-
+@RequestMapping("/admin")
 public class adminController {
 	
 	

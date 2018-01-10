@@ -2,6 +2,7 @@ package com.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +12,7 @@ import com.Dao.UserDao;
 import com.model.User;
 
 @Controller
+
 public class indexController {
 
 	@Autowired
@@ -25,11 +27,11 @@ public class indexController {
 
 	}
 	
-	/*@RequestMapping(value = "/index")
+	@RequestMapping(value = "/index")
 	public String home() 
 	{
 			return "index";
-	}*/
+	}
 
 	@RequestMapping(value="/saveRegister", method=RequestMethod.GET)
 	public ModelAndView saveRegister(@ModelAttribute("user")User user)
@@ -67,10 +69,10 @@ public class indexController {
 		return "login";
 	}
 	
-	@RequestMapping("/userLogged")
+	@RequestMapping("/userlogged")
 	public String underlogged()
 	{
-		return "redirect:/login";
+		return "redirect:/index";
 	}
 	
 	@RequestMapping("/error")
@@ -84,4 +86,12 @@ public class indexController {
 	{
 		return "redirect:/goToLogin";
 	}
+	
+	@RequestMapping("/logout")
+	   public String logout(Model model)
+	   {
+		   model.addAttribute("msg", "successfully Logout");
+		   return "login";
+		   
+	   }
 }

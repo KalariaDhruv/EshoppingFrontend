@@ -1,16 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>404 Error </title>
+
+<title>Insert title here</title>
+
+<meta name="viewport" content="width=device-width,intial-scale=l">
+ <meta cherset="utf-8">
+ <script src="http://ajax.google.com/ajax/libs/jquary/3.2.1/jquary.min.js"></script>
+ <link href="https://maxcdn.bootstrapcdn.com/bootstra/3.3.7/css/bootstra.min.css" rel="stylesheet">
+
+
+
 </head>
 <body>
-<center>
-<h1>Oops!</h1>
-<h4>404 Not Found</h4>
-<h6>Sorry, an error has occured, Requested page not found!</h6>
-</center>
+
+<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+
+<div class="container">
+<h2>Authentication Error!!!</h2>
+<h3>Go back to Home or<a href="${pageContext.request.contextPath }/goToLogin">Login</a>page</h3>
+
+
+ <div class="item">
+      <img class="img-rounded" class="img-responsive center-block" src=<spring:url value="/resources/error.jpg"/> alt="Error" style="width:50%">
+    </div>
+
+</div>
 </body>
 </html>
