@@ -19,9 +19,9 @@
 <div class="panel with-nav-tabs panel-primary">
 <div class="panel-heading">
      <ul class="nav nav-tabs">
-		<li class="active"><a href="#tab1" data-toggle="tab">Category</a></li>
-		<li><a href="#tab2" data-toggle="tab">Supplier</a></li>
-		<li><a href="#tab3" data-toggle="tab">Product</a></li>
+		<li class="active"><a href="#tab1" data-toggle="tab">Supplier</a>
+		<li><a href="#tab2" data-toggle="tab">Category</a>
+		<li><a href="#tab3" data-toggle="tab">Product</a>
 	
 	</ul>
 
@@ -29,7 +29,7 @@
 <div class="tab-contect">
 
 <div class="tab-pane fad in active" id="tab1">
-<form method="post" action="<c:url value="/productList"/>" class="form-signin">
+<form method="post" action="<c:url value="/admin/saveSupp"/>" class="form-signin">
 <span id="reauth-email" class="reauth-email"></span>
 <h4 class="input-title">Supplier Id</h4><br>
 <input class="form-control" type="number" name="sid" required/>
@@ -43,19 +43,89 @@
 </form>
 </div>
 
-<div class="tab-pane fad in active" id="tab1">
-<form method="post" action="<c:url value="/saveCat"/>" class="form-signin">
+<div class="tab-pane fad " id="tab2">
+<form method="post" action="<c:url value="/admin/saveCat"/>" class="form-signin">
 <span id="reauth-email" class="reauth-email"></span>
 <h4 class="input-title">Category Id</h4><br>
 <input class="form-control" type="number" name="cid" required/>
 
-<h5 class="input-title">Category Name</h5><br>
+<h4 class="input-title">Category Name</h4><br>
 <input class="form-control" type="text" name="cname" required/>
+
+<br><br>
+<button class="btn btn-lg btn-primary" type="submit">Save</button>
+<button class="btn btn-lg btn-warnig" type="reset">Cancel</button>
+</form>
+</div>
+
+
+<!-- new added -->
+
+ <div class="tab-pane fad in active" id="tab3">
+<form method="post" action="<c:url value="/admin/saveProduct"/>" class="form-signin" enctype="multipart/form-data">
+<span id="reauth-email" class="reauth-email"></span>
+
+<h4 class="input-title">Product Name</h4><br>
+<input class="form-control" type="text" name="pName" required/>
+
+<h4 class="input-title">Product Description</h4><br>
+<input class="form-control" type="text" name="pDescription" required/>
+
+<h4 class="input-title">Product Price</h4><br>
+<input class="form-control" type="number" name="pPrice" required/>
+
+ <h4 class="input-title">Product Stock</h4><br>
+<input class="form-control" type="number" name="pstock" required/>
+ 
+
+<div class="form-group">
+<table>
+<tr>
+	<td>Select Supplier</td>
+	<td>
+	<select class="form-control" name="pSupplier" required>
+	<option>---Select Supplier</option>
+	<c:forEach items="${satList}" var="sat">
+	<option value="${sat.sid}">${sat.supplierName}</option>
+	</c:forEach>
+	</select>
+	</td>
+	</tr>
+
+</table>
+</div>
+
+
+<div class="form-group">
+<table>
+<tr>
+	<td>Select Category</td>
+	<td>
+	<select class="form-control" name="pCategory" required>
+	<option>---Select Category</option>
+	<c:forEach items="${catList}" var="cat">
+	<option value="${cat.cid}">${cat.cname}</option>
+	</c:forEach>
+	</select>
+	</td>
+	</tr>
+
+</table>
+</div>
+
+<div class="fileinput fileinput-new" data-provider="fileinput">
+
+<td>Product Image</td>
+<td><input class="form-control" type="file" name="file" accept="image/*"></td>
+</div>
+
 
 <button class="btn btn-lg btn-primary" type="submit">Save</button>
 <button class="btn btn-lg btn-warnig" type="reset">Cancel</button>
 </form>
 </div>
+ 
+<!-- ==================================== -->
 
 </div>
 </div>

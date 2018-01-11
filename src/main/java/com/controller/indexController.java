@@ -1,14 +1,20 @@
 package com.controller;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Dao.CategoryDao;
+import com.Dao.ProductDao;
 import com.Dao.UserDao;
+import com.model.Category;
 import com.model.User;
 
 @Controller
@@ -17,6 +23,13 @@ public class indexController {
 
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	ProductDao productDao;
+	
+	@Autowired
+	CategoryDao categoryDao;
+
 	
 	
 	@RequestMapping(value = "/")
@@ -62,6 +75,56 @@ public class indexController {
 		return mv;
 		
 	}	
+	
+	/*@RequestMapping(value="/saveProduct", method=RequestMethod.GET)
+	@Transactional
+	public ModelAndView saveProd(@ModelAttribute("pid")int pid, @ModelAttribute("pname")String pname)
+	{
+		System.out.print("in product");
+		ModelAndView mv=new ModelAndView("adding");
+		
+		//mv.addObject("user",new User());
+		//System.out.println(mv.getViewName());
+		
+		//mv.setViewName("register");
+		System.out.print("after product");
+		return mv;
+		
+	}	
+	
+	@RequestMapping(value="/saveProduct", method=RequestMethod.POST)
+	@Transactional
+	public ModelAndView saveProd1(@ModelAttribute("pid")int pid, @ModelAttribute("pname")String pname)
+	{
+		System.out.print("in post product");
+		ModelAndView mv=new ModelAndView();
+		Category cc=new Category();
+		cc.setPid(pid);
+		cc.setPname(pname);
+		productDao.insertProduct(cc);
+		mv.setViewName("adding");
+		return mv;
+		
+	}*/
+	
+	@RequestMapping("productCustList")
+	public ModelAndView getCustTable(@RequestParam("cid")int cid)
+	{
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("prodList", productDao.retrieve());
+		mv.setViewName("productCustList");
+		return mv;
+	}
+	
+@ModelAttribute
+public void getData(Model m)
+{
+	m.addAttribute("catList", categoryDao.retrieve());
+}
+	
+	
+	
+	
 	
 	@RequestMapping("/goToLogin")
 	public String gotologin()
