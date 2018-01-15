@@ -14,8 +14,8 @@
 
 <div class="container">
 
-<c:url value="/productUpdate" var="pru"/>
-<form method="post" action="productUpdate" enctype="multipart/form-data">
+<c:url value="/ProductUpdate" var="pru"/>
+<form method="post" action="ProductUpdate" enctype="multipart/form-data">
 <span id="reauth-email" class="reauth-email"></span>
 
 <input type="hidden" name="pid" value="${prod.pid}">
@@ -30,7 +30,7 @@
 <input class="${prod.price }" type="number" name="pPrice" required/>
 
  <h4 class="input-title">Product Stock</h4><br>
-<input class="${prod.stock}" type="text" name="pStock" required/>
+<input class="${prod.stock}" type="text" name="pstock" required/>
 
 
 <div class="form-group">
@@ -41,7 +41,7 @@
 	<select class="form-control" name="pSupplier" required>
 	<option>---Select Supplier</option>
 	<c:forEach items="${satList}" var="sat">
-	<option value="${sat.sid}">${sat.supplier}</option>
+	<option value="${sat.sid}">${sat.supplierName}</option>
 	</c:forEach>
 	</select>
 	</td>
@@ -68,6 +68,17 @@
 </table>
 </div>
 
+<div class="fileinput fileinput-new" data-provider="fileinput">
+
+<td>Product Image</td>
+<td><input class="form-control" type="file" name="file" accept="image/*"></td>
+</div>
+
+
+<button class="btn btn-lg btn-primary" type="submit">Save</button>
+<button class="btn btn-lg btn-warning" type="reset">Cancel</button>
+</form>
+</div>
 
 </body>
 </html>

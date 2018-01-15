@@ -37,7 +37,7 @@
 
 <c:if test="${empty prodList }">
 <tr>
-<td colspan="10" aling="center">No record exists!!</td>
+<td colspan="10" align="center">No record exists!!</td>
 </tr>
 </c:if>
 
@@ -52,10 +52,11 @@
 <td class="span3"><c:out  value="${p.description}"></c:out></td>
 <td><c:out value="${p.price}"></c:out></td>
 <td><c:out value="${p.stock}"></c:out></td>
-<td><img src="${pageContext.request.contextPath}/resources/${p.imgName}" height="50px" width="50px"></td>
+<td><img src="${pageContext.request.contextPath}/resources/${p.imageName}" height="50px" width="50px"></td>
 <td class="span4">
-<c:set var="cotextRoot" value="${pageContext.request.contextPath}"></c:set>
-<a class="btn btn-info" role="button" href="${contextRoot}/updateProd?id=<c:out value="${p.pid }"></c:out>">"Edit</a>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
+<%-- <a class="btn btn-info" role="button" href="${contextRoot}/admin/updateProdw">Editfg</a>--%>
+<a class="btn btn-info" role="button" href="${contextRoot}/admin/updateProd?pid=<c:out value="${p.pid }"></c:out>">Edit</a>
 <a class="btn btn-danger" role="button" href="<c:url value="/deleteProd/${p.pid }"/>">Delete</a></td>
 </tr>
 </c:forEach>

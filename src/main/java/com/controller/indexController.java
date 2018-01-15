@@ -45,7 +45,43 @@ public class indexController {
 	{
 			return "index";
 	}
-
+	
+	@RequestMapping(value="/saveRegister", method=RequestMethod.GET)
+	public ModelAndView saveRegister()
+	{
+		System.out.println("in register");
+		ModelAndView mv=new ModelAndView();
+		
+		//mv.addObject("user",new User());
+		//System.out.println(mv.getViewName());
+		
+		//mv.setViewName("register");
+		mv.addObject("user",new User());
+		mv.setViewName("register");
+		System.out.println("after register");
+		return mv;
+		
+	}
+	@RequestMapping(value="/saveRegister", method=RequestMethod.POST)
+	public ModelAndView saveRegister(@ModelAttribute("user")User user)
+	{
+		System.out.println("in register");
+		ModelAndView mv=new ModelAndView();
+		user.setRole("ROLE_USER");
+		
+		mv.addObject("user",new User());
+		userDao.insertUser(user);
+		//System.out.println(mv.getViewName());
+		
+		mv.setViewName("index");
+		System.out.println("after register");
+		return mv;
+		
+	}
+	
+	
+	
+/*
 	@RequestMapping(value="/saveRegister", method=RequestMethod.GET)
 	public ModelAndView saveRegister(@ModelAttribute("user")User user)
 	{
@@ -75,7 +111,7 @@ public class indexController {
 		return mv;
 		
 	}	
-	
+*/	
 	/*@RequestMapping(value="/saveProduct", method=RequestMethod.GET)
 	@Transactional
 	public ModelAndView saveProd(@ModelAttribute("pid")int pid, @ModelAttribute("pname")String pname)
@@ -107,24 +143,36 @@ public class indexController {
 		
 	}*/
 	
-	@RequestMapping("productCustList")
+	@RequestMapping("/productCustList")
 	public ModelAndView getCustTable(@RequestParam("cid")int cid)
 	{
+		System.out.println("in Category choice controller");
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("prodList", productDao.retrieve());
 		mv.setViewName("productCustList");
+		System .out.println("after Category choice controller");
 		return mv;
+		
 	}
+	/*
+	@RequestMapping("/productCustListd")
+	public ModelAndView getCustTabled(@RequestParam("cid")int cid)
+	{
+		System.out.println("in Category choice controller");
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("prodList", productDao.retrieve());
+		mv.setViewName("productCustList");
+		System .out.println("after Category choice controller");
+		return mv;
+		
+	}*/
 	
-@ModelAttribute
-public void getData(Model m)
-{
-	m.addAttribute("catList", categoryDao.retrieve());
-}
 	
-	
-	
-	
+	@ModelAttribute
+	public void getData(Model m)
+	{
+		m.addAttribute("catList", categoryDao.retrieve());
+	}
 	
 	@RequestMapping("/goToLogin")
 	public String gotologin()

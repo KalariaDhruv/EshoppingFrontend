@@ -123,19 +123,14 @@ public class adminController {
 	{
 				
 		Product prod=new Product();
-		String pname=request.getParameter("pName");	
-		System.out.println(pname);
+		
 		prod.setPname(request.getParameter("pName"));
-		String desc=request.getParameter("pDescription");
-		System.out.println(desc);
+	
 		prod.setDescription(request.getParameter("pDescription"));
 		
 		
-		int x=Integer.parseInt(request.getParameter("pPrice"));
-		System.out.println(x);
 		prod.setPrice(Double.parseDouble(request.getParameter("pPrice")));
-		int x1=Integer.parseInt(request.getParameter("pstock"));
-		System.out.println(x1);
+	
 		prod.setStock(Integer.parseInt(request.getParameter("pstock")));
 		
 		prod.setCategory(categoryDao.findByCatId(Integer.parseInt(request.getParameter("pCategory"))));
@@ -203,24 +198,42 @@ public class adminController {
 		return mv;
 	}
 	
-	@RequestMapping("/deleteProd/ (pid)")
+	@RequestMapping("/deleteProd/(pid)")
 	public String deleteProduct(@PathVariable("pid")int pid)
-	{
-		productDao.deleteProd(pid);
+	{System.out.println("in delete");
+		productDao.deleteProd(pid);;
 		return "redirect:/productList?del";
 	}
 	
 	@RequestMapping("/updateProd")
 	public ModelAndView updateproduct(@RequestParam("pid") int pid)
 	{
+		System.out.println("in update product controller");
 		ModelAndView mv=new ModelAndView();
 		Product p=productDao.findByPID(pid);
 		mv.addObject("prod",p);
 		mv.addObject("catList", categoryDao.retrieve());
 		mv.addObject("satList", supplierDao.retrieve());
 		mv.setViewName("updateProduct");
+		System.out.println("after update product controller");
 		return mv;
 	}
+	
+	
+	/*@RequestMapping("/updateProdw")
+	public ModelAndView updateproductdf()
+	{
+		System.out.println("in update product controller");
+		ModelAndView mv=new ModelAndView();
+		//Product p=productDao.findByPID(pid);
+		mv.addObject("prod",p);
+		mv.addObject("catList", categoryDao.retrieve());
+		mv.addObject("satList", supplierDao.retrieve());
+		mv.setViewName("updateProduct");
+		System.out.println("after update product controller");
+		return mv;
+	}
+	*/
 	
 	@RequestMapping(value="/ProductUpdate",method=RequestMethod.POST)
 	public String updateProd(HttpServletRequest request,@RequestParam("file")MultipartFile file) 
@@ -234,6 +247,7 @@ public class adminController {
 		prod.setPname(request.getParameter("pName"));
 		prod.setPrice(Double.parseDouble(request.getParameter("pPrice")));
 		prod.setDescription(request.getParameter("pDescription"));
+		int s=Integer.parseInt(request.getParameter("pstock"));
 		prod.setStock(Integer.parseInt(request.getParameter("pstock")));
 		
 		String cat=request.getParameter("pCategory");
@@ -264,7 +278,7 @@ public class adminController {
 		{
 			e.printStackTrace();
 		}
-		return "redirect:/productList?update";
+		return "redirect:/admin/productList";
 	}
 
 	

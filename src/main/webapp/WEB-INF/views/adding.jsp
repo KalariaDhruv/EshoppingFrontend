@@ -13,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-<div class="container">
+<div class="container"><br>
 <div class="row">
 <div class="col-md-6">
 <div class="panel with-nav-tabs panel-primary">
@@ -24,11 +24,12 @@
 		<li><a href="#tab3" data-toggle="tab">Product</a>
 	
 	</ul>
+</div>
 
 <div class="panel-body">
 <div class="tab-contect">
 
-<div class="tab-pane fad in active" id="tab1">
+<div class="tab-pane fade in active" id="tab1">
 <form method="post" action="<c:url value="/admin/saveSupp"/>" class="form-signin">
 <span id="reauth-email" class="reauth-email"></span>
 <h4 class="input-title">Supplier Id</h4><br>
@@ -38,12 +39,12 @@
 <input class="form-control" type="text" name="sname" required/>
 
 <button class="btn btn-lg btn-primary" type="submit">Save</button>
-<button class="btn btn-lg btn-warnig" type="reset">Cancel</button>
+<button class="btn btn-lg btn-warning" type="reset">Cancel</button>
 
 </form>
 </div>
 
-<div class="tab-pane fad " id="tab2">
+<div class="tab-pane fade " id="tab2">
 <form method="post" action="<c:url value="/admin/saveCat"/>" class="form-signin">
 <span id="reauth-email" class="reauth-email"></span>
 <h4 class="input-title">Category Id</h4><br>
@@ -54,14 +55,14 @@
 
 <br><br>
 <button class="btn btn-lg btn-primary" type="submit">Save</button>
-<button class="btn btn-lg btn-warnig" type="reset">Cancel</button>
+<button class="btn btn-lg btn-warning" type="reset">Cancel</button>
 </form>
 </div>
 
 
 <!-- new added -->
 
- <div class="tab-pane fad in active" id="tab3">
+ <div class="tab-pane fade in active" id="tab3">
 <form method="post" action="<c:url value="/admin/saveProduct"/>" class="form-signin" enctype="multipart/form-data">
 <span id="reauth-email" class="reauth-email"></span>
 
@@ -121,7 +122,7 @@
 
 
 <button class="btn btn-lg btn-primary" type="submit">Save</button>
-<button class="btn btn-lg btn-warnig" type="reset">Cancel</button>
+<button class="btn btn-lg btn-warning" type="reset">Cancel</button>
 </form>
 </div>
  
